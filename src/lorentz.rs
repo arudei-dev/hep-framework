@@ -11,3 +11,6 @@ pub use self::op_linear::*;
 pub use self::op_index::*;
 pub use self::sp_complex::*;
 pub use self::transmute::*;
+
+#[cfg(test)]
+mod tests;
