@@ -7,13 +7,13 @@ use super::*;
 pub fn differential<'a>(photo: &'a dyn PhotoproductionBase, u: DifferentialUnit) -> Real {
     let rx = photo.get_reaction_data();
 
-    let p4_a = &rx.p_inc_a.p4;
-    let p4_b = &rx.p_inc_b.p4;
+    let p4_a = &rx.particles.inc_a.p4;
+    let p4_b = &rx.particles.inc_b.p4;
 
     let s = (p4_a + p4_b).norm_sq();
 
-    let p3_f = calc_mom3_norm(&rx.p_out_c.p4);
-    let p3_i = calc_mom3_norm(&rx.p_inc_a.p4);
+    let p3_f = calc_mom3_norm(&rx.particles.out_c.p4);
+    let p3_i = calc_mom3_norm(&rx.particles.inc_a.p4);
 
     let modifier = match u {
         DifferentialUnit::DifOmega    => MEVMINSQ_TO_MUBARN / (64. * PI.powi(2) * s) ,

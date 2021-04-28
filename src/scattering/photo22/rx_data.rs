@@ -2,16 +2,19 @@ use super::*;
 use crate::quantum::observable::{Particle};
 use crate::quantum::props::{Reaction};
 
+pub struct RxParticles {
+    pub inc_a: Particle,
+    pub inc_b: Particle,
+    pub out_c: Particle,
+    pub out_d: Particle,
+}
 
 pub struct ReactionData {
+    pub rx_type: Reaction,
     pub energy: Real,
     pub angle: Real,
 
-    pub rx_type: Reaction,
-    pub p_inc_a: Particle,
-    pub p_inc_b: Particle,
-    pub p_out_c: Particle,
-    pub p_out_d: Particle,
+    pub particles: RxParticles,
 }
 
 impl ReactionData {
@@ -21,17 +24,21 @@ impl ReactionData {
             rx_type,
             energy: 0.,
             angle: 0.,
-            p_inc_a: Particle::zero(),
-            p_inc_b: Particle::zero(),
-            p_out_c: Particle::zero(),
-            p_out_d: Particle::zero(),
+            particles: RxParticles {
+                inc_a: Particle::zero(),
+                inc_b: Particle::zero(),
+                out_c: Particle::zero(),
+                out_d: Particle::zero(),
+            },
         }
     }
 
-    pub fn calculate_momentums(&mut self) {
-        let xmn = &self.p_inc_b.mass;
-        let xmk = &self.p_out_c.mass;
-        let xmy = &self.p_out_d.mass;
+    fn calculate_momentums(&mut self) {
+        let px = &mut self.particles;
+
+        let xmn = &px.inc_b.mass;
+        let xmk = &px.out_c.mass;
+        let xmy = &px.out_d.mass;
 
         let angle = self.angle;
 
@@ -42,23 +49,55 @@ impl ReactionData {
 
         let xki = (self.energy.powi(2) - xmn.powi(2)) / (2. * self.energy);
 
-        self.p_inc_a.p4[0] = xki;
-        self.p_inc_a.p4[3] = xki;
+        px.inc_a.p4[0] = xki;
+        px.inc_a.p4[3] = xki;
 
-        self.p_inc_b.p4[0] = (xki.powi(2) + xmn.powi(2)).sqrt();
-        self.p_inc_b.p4[3] = -xki;
+        px.inc_b.p4[0] = (xki.powi(2) + xmn.powi(2)).sqrt();
+        px.inc_b.p4[3] = -xki;
 
         let const_a = self.energy.powi(2) - (xmk + xmy).powi(2);
         let const_b = self.energy.powi(2) - (xmk - xmy).powi(2);
 
         let xqi = (const_a * const_b).sqrt() / (2. * self.energy);
 
-        self.p_out_c.p4[0] = (xqi.powi(2) + xmk.powi(2)).sqrt();
-        self.p_out_c.p4[1] = xqi * angle.sin();
-        self.p_out_c.p4[3] = xqi * angle.cos();
+        px.out_c.p4[0] = (xqi.powi(2) + xmk.powi(2)).sqrt();
+        px.out_c.p4[1] = xqi * angle.sin();
+        px.out_c.p4[3] = xqi * angle.cos();
 
-        self.p_out_d.p4[0] = (xqi.powi(2) + xmy.powi(2)).sqrt();
-        self.p_out_d.p4[1] = -xqi * angle.sin();
-        self.p_out_d.p4[3] = -xqi * angle.cos();
-    } 
+        px.out_d.p4[0] = (xqi.powi(2) + xmy.powi(2)).sqrt();
+        px.out_d.p4[1] = -xqi * angle.sin();
+        px.out_d.p4[3] = -xqi * angle.cos();
+    }
+
+    pub fn set_energy(&mut self, energy: Energy) {
+        let px = &mut self.particles;
+
+        self.energy = match energy {
+            Energy::InCMFrame(e_cm) => e_cm,
+            Energy::InLabFrame(e_lab) => {
+                let mass_nucl = &px.inc_b.mass;
+                (
+                    (2. * mass_nucl * e_lab)
+                    + mass_nucl.powi(2)
+                ).sqrt()
+            }
+        };
+
+        self.calculate_momentums();
+    }
+
+    pub fn set_angle(&mut self, angle: Angle) {
+        use crate::math::PI;
+
+        self.angle = match angle {
+            Angle::InRadian(rad) => rad,
+            Angle::InDegree(deg) => deg * (PI / 180.)
+        };
+
+        self.calculate_momentums();
+    }
+
+    pub fn set_rx_type(&mut self, rx_type: Reaction) {
+        self.rx_type = rx_type;
+    }
 }

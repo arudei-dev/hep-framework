@@ -1,3 +1,5 @@
+//! Contains tools to bootstrap a 2 -> 2 Photoproduction (γ + A -> B + C)
+
 use super::*;
 
 pub mod base;
