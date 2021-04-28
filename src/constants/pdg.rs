@@ -139,8 +139,6 @@ pub mod meson {
             pub const STRANGENESS: f64 = 1.; 
 
             pub mod anti {
-                use super::*;
-
                 pub const STRANGENESS: f64 = -1.; 
             }
         }
