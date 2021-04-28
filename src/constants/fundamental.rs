@@ -22,7 +22,10 @@ pub mod dimensionless {
         pub const OF_PROTON: f64 = 5.5856946893;
     }
 
-    pub mod anomal_magnetic_moments {
+    pub mod nuclear_magnetic_moments {
+        //! The intrinsic magnetic dipole moment of nuclear particles
+        //! (proton and neutron) relative to the nuclear magneton.
+
         pub const OF_PROTON: f64 = 1.79;
         pub const OF_NEUTRON: f64 = -1.91;
     }
