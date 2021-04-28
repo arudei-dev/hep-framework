@@ -17,8 +17,10 @@ pub enum Helicity {
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Charge {
-    Positive = 1,
-    Negative = -1,
+    Positive,
+    Neutral,
+    Negative,
+    Of(f64),
 }
 
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -27,11 +29,13 @@ pub enum Parity {
     Negative = -1,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq)]
-pub enum Reaction {
-    Neutral,
-    Charged(Charge)
-}
+// #[derive(Debug, Clone, Copy, PartialEq)]
+// pub enum Reaction {
+//     Neutral,
+//     Charged(Charge)
+// }
+
+pub type Reaction = Charge;
 
 
 pub type StateMatrix = hilbert::mat44::Mat44;
