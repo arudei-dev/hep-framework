@@ -21,7 +21,9 @@ pub use prop_polar::*;
 pub use prop_trig::*;
 
 
+/// Defined as 'i', as a shortcut for initializing imaginary-only complex number.
 pub const J: Complex = Complex { real: 0., imag: 1. };
+/// Shortcut for initializing real-only complex number.
 pub const R: Complex = Complex { real: 1., imag: 0. };
 
 #[cfg(test)]
