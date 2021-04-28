@@ -1,6 +1,7 @@
 {
   "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
   "editor.fontLigatures": true,
+  "editor.tabSize": 4,
   "highlight.decorations": { "rangeBehavior": 15 },
   "highlight.regexFlags": "gi",
   "highlight.regexes": {
