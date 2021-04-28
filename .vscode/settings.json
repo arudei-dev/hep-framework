@@ -5,7 +5,7 @@
   "highlight.decorations": { "rangeBehavior": 15 },
   "highlight.regexFlags": "gi",
   "highlight.regexes": {
-    "(let|let mut|const|pub const)(\\s+[a-zA-Z0-9_]+)(\\s*:\\s*[a-zA-Z0-9&*<>]+)(\\s+=)": [
+    "(let|let mut|const|pub const)(\\s+[a-zA-Z0-9_]+)(\\s*:\\s*[a-zA-Z0-9&*<>\\[\\]\\s*;]+)(\\s+=)": [
       {},
       {},
       {
