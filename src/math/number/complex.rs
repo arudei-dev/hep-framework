@@ -23,3 +23,6 @@ pub use prop_trig::*;
 
 pub const J: Complex = Complex { real: 0., imag: 1. };
 pub const R: Complex = Complex { real: 1., imag: 0. };
+
+#[cfg(test)]
+mod tests;
