@@ -1,0 +1,16 @@
+{
+  "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "highlight.decorations": { "rangeBehavior": 15 },
+  "highlight.regexFlags": "gi",
+  "highlight.regexes": {
+    "(let|let mut|const|pub const)(\\s+[a-zA-Z0-9_]+)(\\s*:\\s*[a-zA-Z0-9&*<>]+)(\\s+=)": [
+      {},
+      {},
+      {
+        "color": "#9A999A"
+      },
+      {}
+    ]
+  }
+}
