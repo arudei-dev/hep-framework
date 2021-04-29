@@ -32,6 +32,16 @@ impl ReactionData {
             },
         }
     }
+    
+    #[inline]
+    pub fn init_with_particles(rx_type: Reaction, particles: RxParticles) -> Self {
+        Self {
+            rx_type,
+            energy: 0.,
+            angle: 0.,
+            particles,
+        }
+    }
 
     fn calculate_momentums(&mut self) {
         let px = &mut self.particles;
@@ -95,9 +105,5 @@ impl ReactionData {
         };
 
         self.calculate_momentums();
-    }
-
-    pub fn set_rx_type(&mut self, rx_type: Reaction) {
-        self.rx_type = rx_type;
     }
 }
