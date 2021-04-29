@@ -3,11 +3,11 @@
 use super::*;
 
 pub mod base;
+pub mod kind;
 pub mod rx_data;
 pub mod cross_section;
-pub mod xch_base;
 
 pub use base::*;
+pub use kind::*;
 pub use rx_data::*;
 pub use cross_section::*;
-pub use xch_base::*;
