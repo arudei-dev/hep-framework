@@ -12,9 +12,9 @@ pub trait XchBasePseudoscalar : XchBase {
 }
 
 pub struct QuantumStatesIters {
-    h_photon: Vec<Helicity>,
-    sp_inc_b: Vec<Spin>,
-    sp_out_d: Vec<Spin>,
+    pub h_photon: Vec<Helicity>,
+    pub sp_inc_b: Vec<Spin>,
+    pub sp_out_d: Vec<Spin>,
 }
 
 pub fn calc_ampl_avgsq(
