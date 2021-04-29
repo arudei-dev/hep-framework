@@ -3,7 +3,7 @@ use crate::math::number::*;
 use crate::quantum::{*, relativistic::*};
 
 
-pub trait XchBaseVector : XchBase {
+pub trait XchBaseVector {
     fn calc_invariant_amplitude(
         &self,
         rx: &ReactionData,
