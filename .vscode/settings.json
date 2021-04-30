@@ -13,5 +13,10 @@
       },
       {}
     ]
+  },
+  "files.exclude": {
+    "**/.*": true,
+    "**/*.lock": true,
+    "**/target": true
   }
 }
