@@ -36,7 +36,7 @@ pub mod baryon {
         pub mod lambda {
             use crate::constants::pdg::*;
 
-            pub const MASS_MEV: f64 = 1116.;
+            pub const MASS_MEV: f64 = 1115.683;
 
             pub const CHARGE: Charge = Charge::Neutral;
             pub const PARITY: Parity = Parity::Positive; 
@@ -47,7 +47,7 @@ pub mod baryon {
         pub mod sigma_p {
             use crate::constants::pdg::*;
 
-            pub const MASS_MEV: f64 = 1189.;
+            pub const MASS_MEV: f64 = 1189.37;
 
             pub const CHARGE: Charge = Charge::Positive;
             pub const PARITY: Parity = Parity::Positive;
@@ -58,7 +58,7 @@ pub mod baryon {
         pub mod sigma_0 {
             use crate::constants::pdg::*;
 
-            pub const MASS_MEV: f64 = 1192.;
+            pub const MASS_MEV: f64 = 1192.642;
 
             pub const CHARGE: Charge = Charge::Neutral;
             pub const PARITY: Parity = Parity::Positive;  
@@ -69,7 +69,7 @@ pub mod baryon {
         pub mod sigma_m {
             use crate::constants::pdg::*;
 
-            pub const MASS_MEV: f64 = 1197.;
+            pub const MASS_MEV: f64 = 1197.449;
 
             pub const CHARGE: Charge = Charge::Negative;
             pub const PARITY: Parity = Parity::Positive;
