@@ -7,10 +7,20 @@ pub struct VectorParticleInv {
     pub h_photon: Helicity,
     pub h_vector: Helicity,
 }
-
 impl ParticleInvariance for VectorParticleInv {}
 
-impl PhotoproductionBase for Photoproduction<VectorParticleInv> {
+pub struct AmplsConfig {
+    pub spin_avg: Real,
+    pub h_photon: Vec<Helicity>,
+    pub s_inc_b:  Vec<Spin>,
+    pub h_out_c:  Vec<Helicity>,
+    pub s_out_d:  Vec<Spin>,
+}
+impl AmplsConfiguration for AmplsConfig {}
+
+
+
+impl PhotoproductionBase for Photoproduction<VectorParticleInv, AmplsConfig> {
     #[inline]
     fn get_rx_data(&self) -> &RxData {
         &self.reaction
@@ -54,4 +64,4 @@ impl PhotoproductionBase for Photoproduction<VectorParticleInv> {
     }
 }
 
-pub type VectorInvPhotoproduction = Photoproduction<VectorParticleInv>;
+pub type VectorInvPhotoproduction = Photoproduction<VectorParticleInv, AmplsConfig>;

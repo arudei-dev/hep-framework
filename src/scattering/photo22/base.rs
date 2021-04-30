@@ -1,9 +1,12 @@
 use super::*;
 use crate::quantum::*;
 
+
 pub trait ParticleInvariance {}
-pub trait ExchangeBase<T: ParticleInvariance> {
-    fn calc_invariant_amplitude(&self, rx: &RxData, states: T) -> StateMatrix;
+pub trait AmplsConfiguration {}
+
+pub trait ExchangeBase<X: ParticleInvariance> {
+    fn calc_invariant_amplitude(&self, rx: &RxData, states: X) -> StateMatrix;
 }
 
 pub trait PhotoproductionBase {
@@ -12,26 +15,25 @@ pub trait PhotoproductionBase {
     fn calc_amplitude_avgsq(&self) -> Real;
 }
 
-pub struct AmplsConfig {
-    pub spin_avg: Real,
-    pub h_photon: Vec<Helicity>,
-    pub s_inc_b:  Vec<Spin>,
-    pub h_out_c:  Vec<Helicity>,
-    pub s_out_d:  Vec<Spin>,
-}
 
-pub struct Photoproduction<T: ParticleInvariance> {
-    pub(crate) ampls_cfg: AmplsConfig,
+pub struct Photoproduction<X, A> 
+where
+    X: ParticleInvariance, A: AmplsConfiguration
+{
+    pub(crate) ampls_cfg: A,
     pub(crate) energy_cm: Real,
     pub(crate) angle_rad: Real,
 
-    pub(crate) exchanges: Vec<Box<dyn ExchangeBase<T>>>,
+    pub(crate) exchanges: Vec<Box<dyn ExchangeBase<X>>>,
     pub(crate) reaction: RxData,
 }
 
-impl<T: ParticleInvariance> Photoproduction<T> {
+impl<X, A> Photoproduction<X, A> 
+where
+    X: ParticleInvariance, A: AmplsConfiguration
+{
     #[inline]
-    pub fn init(charge: Charge, ampls_cfg: AmplsConfig) -> Self {
+    pub fn init(charge: Charge, ampls_cfg: A) -> Self {
         Self {
             ampls_cfg,
             energy_cm: 0., angle_rad: 0.,
@@ -41,7 +43,7 @@ impl<T: ParticleInvariance> Photoproduction<T> {
     }
 
     #[inline]
-    pub fn init_with(rx: RxData, ampls_cfg: AmplsConfig) -> Self {
+    pub fn init_with(rx: RxData, ampls_cfg: A) -> Self {
         Self {
             ampls_cfg,
             energy_cm: 0., angle_rad: 0.,
@@ -78,7 +80,7 @@ impl<T: ParticleInvariance> Photoproduction<T> {
 
     
     #[inline]
-    pub fn add_exchange(&mut self, xch: Box<dyn ExchangeBase<T>>) {
+    pub fn add_exchange(&mut self, xch: Box<dyn ExchangeBase<X>>) {
         self.exchanges.push(xch);
     }
 

@@ -6,10 +6,19 @@ use crate::quantum::{*, relativistic::*};
 pub struct PseudoscalarParticleInv {
     pub h_photon: Helicity,
 }
-
 impl ParticleInvariance for PseudoscalarParticleInv {}
 
-impl PhotoproductionBase for Photoproduction<PseudoscalarParticleInv> {
+pub struct AmplsConfig {
+    pub spin_avg: Real,
+    pub h_photon: Vec<Helicity>,
+    pub s_inc_b:  Vec<Spin>,
+    pub s_out_d:  Vec<Spin>,
+}
+impl AmplsConfiguration for AmplsConfig {}
+
+
+
+impl PhotoproductionBase for Photoproduction<PseudoscalarParticleInv, AmplsConfig> {
     #[inline]
     fn get_rx_data(&self) -> &RxData {
         &self.reaction
@@ -51,4 +60,4 @@ impl PhotoproductionBase for Photoproduction<PseudoscalarParticleInv> {
     }
 }
 
-pub type PseudoscalarInvPhotoproduction = Photoproduction<PseudoscalarParticleInv>;
+pub type PseudoscalarInvPhotoproduction = Photoproduction<PseudoscalarParticleInv, AmplsConfig>;
