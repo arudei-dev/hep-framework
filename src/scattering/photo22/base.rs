@@ -41,7 +41,7 @@ impl<T: ParticleInvariance> Photoproduction<T> {
     }
 
     #[inline]
-    pub fn init_with(rx : RxData, ampls_cfg: AmplsConfig) -> Self {
+    pub fn init_with(rx: RxData, ampls_cfg: AmplsConfig) -> Self {
         Self {
             ampls_cfg,
             energy_cm: 0., angle_rad: 0.,
