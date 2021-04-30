@@ -1,5 +1,5 @@
 use super::*;
-use crate::quantum::{*, relativistic::*};
+use crate::quantum::*;
 
 pub trait InvariantAmplStates {}
 pub trait ExchangeBase<T: InvariantAmplStates> {
