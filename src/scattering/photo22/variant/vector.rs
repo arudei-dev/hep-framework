@@ -4,8 +4,8 @@ use crate::quantum::{*, relativistic::*};
 
 
 pub struct VectorInvariantAmpl {
-    h_photon: Helicity,
-    h_vector: Helicity,
+    pub h_photon: Helicity,
+    pub h_vector: Helicity,
 }
 
 impl InvariantAmplStates for VectorInvariantAmpl {}

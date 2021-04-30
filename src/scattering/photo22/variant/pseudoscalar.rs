@@ -4,7 +4,7 @@ use crate::quantum::{*, relativistic::*};
 
 
 pub struct PseudoscalarInvariantAmpl {
-    h_photon: Helicity,
+    pub h_photon: Helicity,
 }
 
 impl InvariantAmplStates for PseudoscalarInvariantAmpl {}
