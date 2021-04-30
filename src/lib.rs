@@ -12,6 +12,7 @@
 //! - and common fundamental physical constants.
 //! 
 //! 
+#![allow(dead_code)]
 
 pub mod constants;
 pub mod math;
