@@ -29,14 +29,6 @@ pub enum Parity {
     Negative = -1,
 }
 
-// #[derive(Debug, Clone, Copy, PartialEq)]
-// pub enum Reaction {
-//     Neutral,
-//     Charged(Charge)
-// }
-
-pub type Reaction = Charge;
-
 
 pub type StateMatrix = hilbert::mat44::Mat44;
 pub type StateVector = hilbert::vec4::Vec4;
