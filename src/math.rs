@@ -2,6 +2,7 @@
 //! related (mainly) to High Energy Physics calculations. This submodule
 //! also acts as the building block for other submodule.
 
+pub mod lorentz;
 pub mod hilbert;
 pub mod linear;
 pub mod number;

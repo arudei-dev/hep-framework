@@ -1,5 +1,7 @@
-use crate::math::number::*;
-use crate::lorentz::*;
+use crate::math::{
+    number::*,
+    lorentz::*,
+};  
 
 
 pub type Momentum4 = Lorentz4<Real>;
