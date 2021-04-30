@@ -1,3 +1,7 @@
+//! Abstractions and tools to aid translating several mathematical concepts
+//! related (mainly) to High Energy Physics calculations. This submodule
+//! also acts as the building block for other submodule.
+
 pub mod hilbert;
 pub mod linear;
 pub mod number;
