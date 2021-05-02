@@ -8,3 +8,6 @@ edition = "2018"
 
 [dependencies]
 unroll = "0.1.5"
+
+[lib]
+doctest = false
