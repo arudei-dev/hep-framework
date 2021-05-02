@@ -6,6 +6,11 @@ impl Add for Vec4 {
     type Output = Vec4;
 
     fn add(self, rhs: Vec4) -> Self::Output {
+        debug_assert!(
+            self.basis == rhs.basis,
+            "Operation Vec4 + Vec4 error: must be the same basis!"
+        );
+
         Self::Output {
             content: [
                 self[0] + rhs[0],
@@ -22,6 +27,11 @@ impl Sub for Vec4 {
     type Output = Vec4;
 
     fn sub(self, rhs: Vec4) -> Self::Output {
+        debug_assert!(
+            self.basis == rhs.basis,
+            "Operation Vec4 - Vec4 error: must be the same basis!"
+        );
+
         Self::Output {
             content: [
                 self[0] - rhs[0],

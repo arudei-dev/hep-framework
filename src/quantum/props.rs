@@ -17,20 +17,16 @@ pub enum Helicity {
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Charge {
-    Positive = 1,
-    Negative = -1,
+    Positive,
+    Neutral,
+    Negative,
+    Of(f64),
 }
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Parity {
     Positive = 1,
     Negative = -1,
-}
-
-#[derive(Debug, Clone, Copy, PartialEq)]
-pub enum Reaction {
-    Neutral,
-    Charged(Charge)
 }
 
 

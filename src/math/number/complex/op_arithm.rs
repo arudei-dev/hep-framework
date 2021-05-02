@@ -57,6 +57,8 @@ pub mod base {
         fn div(self, rhs: Complex) -> Self::Output {
             let denom = rhs.norm_sq();
 
+            debug_assert!(denom != 0., "Denominator cannot be zero!");
+
             Self {
                 real: ((self.real * rhs.real) + (self.imag * rhs.imag)) / denom,
                 imag: ((self.imag * rhs.real) - (self.real * rhs.imag)) / denom,

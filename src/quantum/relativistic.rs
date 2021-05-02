@@ -1,7 +1,7 @@
-use std::ops::{Add, Sub, Mul, Neg};
-use crate::math::number::*;
-use crate::lorentz::*;
 use super::*;
+use crate::math::{number::*, lorentz::*};
+
+use std::ops::{Add, Sub, Mul, Neg};
 
 
 pub fn dirac_gamma(idx: usize) -> StateMatrix {

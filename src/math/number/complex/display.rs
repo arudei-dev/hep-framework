@@ -1,3 +1,7 @@
+//! Contains implementation for console display formatting (custom-derived
+//! std::fmt::Display)
+
+
 use std::fmt;
 use super::*;
 

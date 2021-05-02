@@ -5,7 +5,7 @@ use super::*;
 
 
 pub fn differential<'a>(photo: &'a dyn PhotoproductionBase, u: DifferentialUnit) -> Real {
-    let rx = photo.get_reaction_data();
+    let rx = photo.get_rx_data();
 
     let p4_a = &rx.p_inc_a.p4;
     let p4_b = &rx.p_inc_b.p4;
